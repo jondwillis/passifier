@@ -58,7 +58,7 @@ module Passifier
     # Store the file for the given pass asset to disk
     # @param [Object] asset Store the file for the given pass asset
     def write_file(asset)
-      File.open(path(asset.filename), 'w') do |file| 
+      File.open(path(asset.filename), 'wb') do |file| 
         file.write(asset.content) if asset.respond_to?(:content)
       end
     end
