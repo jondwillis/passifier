@@ -15,7 +15,7 @@ module Passifier
     end
 
     def initialize(p12, pass_phrase)
-      @p12 = OpenSSL::PKCS12.new(File.read(p12)), pass_phrase)
+      @p12 = OpenSSL::PKCS12.new(File.read(p12), pass_phrase)
     end
 
     # Generate a digest of the given content
@@ -30,7 +30,7 @@ module Passifier
     # @param [String] content The content to generate a signing of
     # @return [String] The resulting signing
     def sign(content)
-      if @p12 then
+      if @p12
         key = @p12.key
         certificate = @p12.certificate
       else
